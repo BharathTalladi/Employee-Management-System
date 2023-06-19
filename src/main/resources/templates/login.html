@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/login}">Employee Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/registration}">Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-6 col-md-offset-3">
+
+      <h1> Sign-in </h1>
+        <form th:action="@{/login}" method="post">
+
+
+
+        <!-- error message -->
+        <div th:if="${param.error}">
+          <div class="alert alert-danger">Invalid Email or
+            password.</div>
+        </div>
+
+        <!-- logout message -->
+        <div th:if="${param.logout}">
+          <div class="alert alert-info">You have been logged out.</div>
+        </div>
+
+        <div class = "form-group">
+          <label for ="username"> Username </label> :
+          <input type="text" class = "form-control" id ="username" name = "username"
+                 placeholder="Enter Email ID" autofocus="autofocus">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>: <input type="password"
+                                                         id="password" name="password" class="form-control"
+                                                         placeholder="Enter Password" />
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <input type="submit" name="login-submit" id="login-submit"
+                     class="form-control btn btn-primary" value="Log In" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group">
+						<span>New user? <a href="/registration" th:href="@{/registration}">Register
+								here</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
