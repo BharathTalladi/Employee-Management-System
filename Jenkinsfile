@@ -6,8 +6,8 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BharathTalladi/Employee-Management-System.git']]])
-                sh 'mvn clean install'
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BharathTalladi/Employee-Management-System']])
+                bat 'mvn clean install'
             }
         }
     }
