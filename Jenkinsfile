@@ -23,7 +23,7 @@ pipeline {
                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                    bat 'docker login -u talladi412 -p {dockerhubpwd}'
 
-				}
+				    }
                     bat 'docker push employeemanagement-0.0.1-SNAPSHOT.jar'
                 }
             }
